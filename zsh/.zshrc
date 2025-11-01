@@ -19,6 +19,11 @@ _comp_options+=(globdots)		# Include hidden files.
 bindkey -v
 export KEYTIMEOUT=1
 
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line  # For vi-style keybindings
+bindkey '^Xe' edit-command-line       # For Emacs-style keybindings (Ctrl-x e)
+
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
@@ -30,3 +35,7 @@ alias v="nvim"
 alias ls="ls --color=auto"
 
 alias tmux="tmux -2"
+
+fe() {
+  nvim "$(find -type f | fzf --preview 'cat {}' --preview-window 'up:60%')"
+}
