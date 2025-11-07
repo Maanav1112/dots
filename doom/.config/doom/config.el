@@ -1,8 +1,8 @@
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
-(setq doom-font (font-spec :family "GeistMono Nerd Font" :size 15)
-      doom-variable-pitch-font (font-spec :family "Inconsolata Nerd Font" :size 18)
-      doom-big-font (font-spec :family "GeistMono Nerd Font" :size 22))
+(setq doom-font (font-spec :family "Terminess Nerd Font" :size 15)
+      doom-variable-pitch-font (font-spec :family "Terminess Nerd Font" :size 18)
+      doom-big-font (font-spec :family "Terminess Nerd Font" :size 22))
 ;;   presentations or streaming.
 ;;
 ;; Send files to trash instead of fully deleting
@@ -19,6 +19,17 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/docx/notes/")
+
+(custom-set-faces
+ '(org-level-1 ((t (:inherit outline-1 :height 1.7))))
+ '(org-level-2 ((t (:inherit outline-2 :height 1.6))))
+ '(org-level-3 ((t (:inherit outline-3 :height 1.5))))
+ '(org-level-4 ((t (:inherit outline-4 :height 1.4))))
+ '(org-level-5 ((t (:inherit outline-5 :height 1.3))))
+ '(org-level-6 ((t (:inherit outline-5 :height 1.2))))
+ '(org-level-7 ((t (:inherit outline-5 :height 1.1)))))
+
+
 
 ;; Org Agenda
 ;; Set days viewed to 3, set start day to today, create seperator, and Dashboard view
@@ -92,3 +103,7 @@
         lsp-ui-doc-delay 0.5
         lsp-ui-sideline-enable nil
         lsp-ui-peek-enable t))
+
+(setq-default org-download-image-dir "assets")
+
+(require 'org-tempo)

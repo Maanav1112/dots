@@ -1,51 +1,22 @@
-
+@import "/home/maanav/.cache/wal/colors-waybar.css" ;
 /* Nord */
-@define-color bg #2E3440;
-/*@define-color bg #353C4A;*/
-@define-color light #D8DEE9;
-/*@define-color dark @nord_dark_font;*/
-@define-color warning #ebcb8b;
-@define-color critical #BF616A;
-@define-color mode #434C5E;
-/*@define-color workspaces @bg;*/
-/*@define-color workspaces @nord_dark_font;*/
-/*@define-color workspacesfocused #434C5E;*/
-@define-color workspacesfocused #4C566A;
-@define-color tray @workspacesfocused;
-@define-color sound #EBCB8B;
-@define-color network #5D7096;
-@define-color memory #546484;
-@define-color cpu #596A8D;
-@define-color temp #4D5C78;
-@define-color layout #5e81ac;
-@define-color battery #88c0d0;
-@define-color date #434C5E;
-@define-color time #434C5E;
-@define-color backlight #434C5E;
-@define-color nord_bg #434C5E;
-@define-color nord_bg_blue #546484;
-@define-color nord_light #D8DEE9;
-@define-color nord_light_font #D8DEE9;
-@define-color nord_dark_font #434C5E;
-
 
 * {
     border: none;
     border-radius: 3px;
     min-height: 0;
-    margin: 0.2em 0.3em 0.2em 0.3em;
 }
 
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: JetBrainsMono Nerd Font;
+    font-family: Terminess Nerd Font;
     font-size: 13px;
 }
 
 #waybar {
-    background: @bg;
-    color: @light;
+    background: @background;
+    color: @foreground;
     font-weight: bold;
 }
 
@@ -96,6 +67,7 @@
 #language,
 #custom-cpugovernor {
     padding-left: 0.6em;
+    background: @background;
     padding-right: 0.6em;
 } 
 
@@ -122,8 +94,8 @@
 #cpu.warning,
 #temperature.warning,
 #battery.warning {
-    background: @warning;
-    color: @nord_dark_font;
+    background: @color15;
+    color: @background;
 }
 
 /* Each warning that should blink */
@@ -133,54 +105,38 @@
 }
 
 #bluetooth {
-    background: @nord_bg_blue;
+    background: @background;
     font-size: 1.2em;
     font-weight: bold;
-    padding: 0 0.6em;
 }
 
 
 #pulseaudio { /* Unsused but kept for those who needs it */
-    background: @nord_bg_blue;
-    color: #D8DEE9;
+    background: @background;
+    color: @foreground;
 }
 
 #pulseaudio.muted {
-    background: #BF616A;
-    color: #BF616A;
+    background: @background;
+    color: @color2;
     /* No styles */
 }
 #pulseaudio.source-muted {
-    background: #D08770;
-    color: #D8DEE9;
+    background: @background;
+    color: @color2;
     /* No styles */
 }
 
-#window,
-#workspaces {
-    margin: 0 4px;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
 #clock {
-    background: @nord_bg_blue;
-    color: #D8DEE9;
+    background: @background;
+    color: @foregorund;
 }
 #clock.date {
-    background: @date;
+    background: @background;
 }
 
 #clock.time {
-    background: @mode;
+    background: @background;
 }
 
 
@@ -193,14 +149,14 @@
 
 
 #battery {
-    background: @battery;
+    background: @background;
 }
 
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
-    color: #ffffff;
+    color: @background;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -214,42 +170,21 @@
 
 #power-profiles-daemon.performance {
     background-color: #f53c3c;
-    color: #ffffff;
+    color: @background;
 }
 
 #power-profiles-daemon.balanced {
-    background-color: #2980b9;
-    color: #ffffff;
+    background-color: @background;
+    color: @foreground;
 }
 
 #power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
-    color: #000000;
+    background-color: @background;
+    color: @foreground;
 }
 
 label:focus {
-    background-color: #000000;
-}
-
-#cpu {
-    background-color: #2ecc71;
-    color: #000000;
-}
-
-#memory {
-    background-color: #9b59b6;
-}
-
-#disk {
-    background-color: #964B00;
-}
-
-#backlight {
-    background-color: #90b1b1;
-}
-
-#network {
-    background-color: #2980b9;
+    background-color: @background;
 }
 
 #network.disconnected {
@@ -265,9 +200,6 @@ label:focus {
     background-color: #eb4d4b;
 }
 
-#tray {
-    background-color: #2980b9;
-}
 
 #tray > .passive {
     -gtk-icon-effect: dim;
