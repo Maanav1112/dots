@@ -1,0 +1,8 @@
+require("plugins.dashboard")
+require("plugins.lsp-config")
+require("plugins.mason")
+require("plugins.render-markdown")
+require("plugins.live-preview")
+require("plugins.markdown")
+require("plugins.nord")
+require("plugins.zen")

@@ -1,270 +1,92 @@
-@import "/home/maanav/.cache/wal/colors-waybar.css" ;
-/* Nord */
-
 * {
-    border: none;
-    border-radius: 3px;
+    font-family: "DaddyTimeMono Nerd Font Mono", "Font Awesome 6 Free", sans-serif;
+    font-size: 13px;
     min-height: 0;
 }
 
-
-* {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Terminess Nerd Font;
-    font-size: 13px;
+window#waybar {
+	all:unset;
+	background-color: rgba(0, 0, 0, 0);	
+	border: none;
+	border-radius: 0;
+	transition-property: background-color;
+	transition-duration: 0.5s;
 }
 
-#waybar {
-    background: @background;
-    color: @foreground;
-    font-weight: bold;
+button {
+	/* Use box-shadow instead of border so the text isn't offset */
+	box-shadow: inset 0 0 transparent;
+	color: #ffffff;
+	border: none;
+	border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+	background: transparent;
+}
+
+tooltip {
+	background-color: rgba(12, 12, 12, 0.8);
+	border-radius: 8px;
+}
+
+#workspaces,
+#clock,
+#mpris,
+
+.modules-right {
+	padding: 0 0.5em;
+}
+
+#workspaces {
+	font-weight: bold;
+	font-size: 12px;
 }
 
 #workspaces button {
-    font-weight: bold; /* Somewhy the bar-wide setting is ignored*/
-    padding: 0;
-    /*color: #999;*/
-    opacity: 0.3;
-    background: none;
-    font-size: 1em;
+	padding: 0 0.25em;
 }
 
-#workspaces button.focused {
-    background: @workspacesfocused;
-    color: #D8DEE9;
-    opacity: 1;
-    padding: 0 0.4em;
+#workspaces button.visible {
+	color: white;
 }
 
-#workspaces button.urgent {
-    border-color: #c9545d;
-    color: #c9545d;
-    opacity: 1;
+#workspaces button.empty {
+	color: rgb(160, 160, 160);
 }
 
-
-#mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
-}
-
-/* Each module */
-#battery,
-#clock,
-#cpu,
-#custom-layout,
-#memory,
-#mode,
-#network,
-#pulseaudio,
-#temperature,
-#custom-alsa,
-#custom-pacman,
-#custom-weather,
-#custom-gpu,
-#tray,
-#backlight,
-#language,
-#custom-cpugovernor {
-    padding-left: 0.6em;
-    background: @background;
-    padding-right: 0.6em;
-} 
-
-/* Each critical module */
-#memory.critical,
-#cpu.critical,
-#temperature.critical,
-#battery.critical {
-    color: @critical;
-}
-
-/* Each critical that should blink */
-#mode,
-#memory.critical,
-#temperature.critical,
-#battery.critical.discharging {
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-/* Each warning */
-#network.disconnected,
-#memory.warning,
-#cpu.warning,
-#temperature.warning,
-#battery.warning {
-    background: @color15;
-    color: @background;
-}
-
-/* Each warning that should blink */
-#battery.warning.discharging {
-    animation-name: blink-warning;
-    animation-duration: 3s;
-}
-
-#bluetooth {
-    background: @background;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-
-#pulseaudio { /* Unsused but kept for those who needs it */
-    background: @background;
-    color: @foreground;
-}
-
-#pulseaudio.muted {
-    background: @background;
-    color: @color2;
-    /* No styles */
-}
-#pulseaudio.source-muted {
-    background: @background;
-    color: @color2;
-    /* No styles */
+#workspaces button.active {
+	background: transparent;
+	color: rgb(183, 121, 220);
 }
 
 #clock {
-    background: @background;
-    color: @foregorund;
-}
-#clock.date {
-    background: @background;
+	padding: 0 0.5em;
+	font-weight: bold;
+	font-size: 14px;
 }
 
-#clock.time {
-    background: @background;
+#mpris {
+	padding: 0 0.5em;
+	font-weight: bold;
+	font-size: 14px;
 }
 
+/* #battery.charging { */
+/* 	color: green; */
+/* } */
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+#battery,
+#network, 
+#wireplumber {
+	font-size: 14px;
 }
 
-
-#battery {
-    background: @background;
+#battery.warning {
+	color: yellow;
 }
 
-
-/* Using steps() instead of linear as a timing function to limit cpu usage */
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: @background;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+#battery.critical {
+	color: red;
 }
-
-#power-profiles-daemon {
-    padding-right: 15px;
-}
-
-#power-profiles-daemon.performance {
-    background-color: #f53c3c;
-    color: @background;
-}
-
-#power-profiles-daemon.balanced {
-    background-color: @background;
-    color: @foreground;
-}
-
-#power-profiles-daemon.power-saver {
-    background-color: @background;
-    color: @foreground;
-}
-
-label:focus {
-    background-color: @background;
-}
-
-#network.disconnected {
-    background-color: #f53c3c;
-}
-
-
-#temperature {
-    background-color: #f0932b;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
-}
-
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
-}
-
-#idle_inhibitor {
-    background-color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
-}
-
-#mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}
-
-#language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-	background-color: transparent;
-}
-

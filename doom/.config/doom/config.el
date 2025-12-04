@@ -1,8 +1,8 @@
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
-(setq doom-font (font-spec :family "Terminess Nerd Font" :size 15)
-      doom-variable-pitch-font (font-spec :family "Terminess Nerd Font" :size 18)
-      doom-big-font (font-spec :family "Terminess Nerd Font" :size 22))
+(setq doom-font (font-spec :family "SpaceMono Nerd Font" :size 15)
+      doom-variable-pitch-font (font-spec :family "SpaceMono Nerd Font" :size 18)
+      doom-big-font (font-spec :family "SpaceMono Nerd Font" :size 22))
 ;;   presentations or streaming.
 ;;
 ;; Send files to trash instead of fully deleting
